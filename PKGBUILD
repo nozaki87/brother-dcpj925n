@@ -16,7 +16,7 @@ else
 fi
 
 lprver=3.0.1
-# install=brother-dcpj925n.install
+install=brother-dcpj925n.install
 source=("http://download.brother.com/welcome/dlf100572/dcpj925ncupswrapper-$pkgver-$pkgrel.i386.deb"
 	"http://download.brother.com/welcome/dlf100570/dcpj925nlpr-$lprver-$pkgrel.i386.deb"
 )
@@ -39,11 +39,6 @@ prepare()
 
 package()
 {
- echo "Install package()"
- echo $srcdir
- echo $pkgdir
- chmod 644 $srcdir/opt
- chmod 755 $srcdir/usr
  cp -a $srcdir/opt $pkgdir
  cp -a $srcdir/usr $pkgdir
 }
