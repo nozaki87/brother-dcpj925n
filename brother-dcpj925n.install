@@ -1,0 +1,28 @@
+post_install() {
+	echo "installing driver files"
+
+	# cupswrapper
+  /opt/brother/Printers/dcpj925n/cupswrapper/cupswrapperdcpj925n -i
+  
+  echo "A standard printer for USB connection has been created by"
+  echo "the Brother installation tool."
+  echo "You should change printer default settings as necessary."
+}
+ 
+post_upgrade() {
+	/bin/true
+}
+
+pre_remove() {
+	echo "Removing driver files"
+	
+	# cupswrapper
+	/opt/brother/Printers/dcpj925n/cupswrapper/cupswrapperdcpj925n -e
+	
+	rmdir --ignore-fail-on-non-empty /usr/share/cups/model/Brother
+	rmdir --ignore-fail-on-non-empty /usr/share/ppd/Brother
+	
+  echo ""
+  echo "Please Note:"
+  echo "Manually created printerqueue must be manually removed!"
+}
